@@ -1,9 +1,10 @@
 #include<stdio.h>
+#include <stdbool.h>
 #define DWARF_NUM 9 
 
 int	main(void)
 {
-	int	height[100];
+	int	height[11];
 	int sum;
 
 	sum = 0;
@@ -13,13 +14,15 @@ int	main(void)
 		sum += height[i];
 	}
 
-	for (int i = 0; i < DWARF_NUM; i++)
+	bool check = false;
+	for (int i = 0; i < DWARF_NUM && !check; i++)
 	{
-		for (int j = i + 1; j < DWARF_NUM; j++)
+		for (int j = i + 1; j < DWARF_NUM && !check; j++)
 		{
 			if ((sum - height[i] - height[j]) == 100)
 			{
 				height[i] = height[j] = -1;
+				check = true;
 			}
 		}
 	}
